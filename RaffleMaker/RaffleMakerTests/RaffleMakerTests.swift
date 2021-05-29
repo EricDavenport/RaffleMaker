@@ -32,7 +32,7 @@ class RaffleMakerTests: XCTestCase {
   }
   
   func testSingleRaffleLoad() {
-    let expectedFirstRaffle = Raffle(id: 46, name: "Did you figure it out", createdAt: "2021-05-29T00:21:21.206Z", raffledAt: nil, winnerId: nil)
+    let expectedFirstRaffle = Raffle(id: 46, name: "Did you figure it out", createdAt: "2021-05-29T00:21:21.206Z", raffledAt: "2021-05-29T01:57:38.877Z", winnerId: 47)
     
     let exp = XCTestExpectation(description: "Raffle loaded")
     
@@ -114,6 +114,25 @@ class RaffleMakerTests: XCTestCase {
           XCTFail("Failed to selecta winner - this isn;t the correct way:\(appError)")
         case .success(let facts):
           XCTAssertTrue(facts)
+          exp.fulfill()
+        }
+      }
+    }
+    wait(for: [exp], timeout: 10)
+  }
+  
+  func testLoadWinner() {
+    let expectedWinner = Participant(id: 47, raffleId: 46, firstName: "Eric", lastName: "D", email: "ed@email.com", phone: nil, registeredAt: "2021-05-29T00:55:18.123Z")
+    
+    let exp = XCTestExpectation(description: "Winner successfully loaded")
+    
+    do {
+      RaffleAPClient.loadWinner(46) { result in
+        switch result {
+        case .failure(let appError):
+          XCTFail("Failed to load winner: \(appError)")
+        case .success(let winner):
+          XCTAssertEqual(expectedWinner, winner)
           exp.fulfill()
         }
       }

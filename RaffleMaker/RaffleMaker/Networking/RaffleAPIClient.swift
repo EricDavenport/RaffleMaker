@@ -101,6 +101,37 @@ struct RaffleAPClient {
     }
   }
   
+  
+  /// <#Description#>
+  /// - Parameters:
+  ///   - id: <#id description#>
+  ///   - completion: <#completion description#>
+  /// - Returns: <#description#>
+  static func loadWinner(_ id: Int, completion: @escaping (Result<Participant, AppError>) -> ()) {
+    let endpointURLString = "https://raffle-fs-app.herokuapp.com/api/raffles/\(id)/winner"
+    
+    guard let url = URL(string: endpointURLString) else {
+      completion(.failure(.badURL(endpointURLString)))
+      return
+    }
+    
+    let request = URLRequest(url: url)
+    
+    NetworkHelper.shared.performDataTask(with: request) { result in
+      switch result {
+      case .failure(let appError):
+        completion(.failure(.networkClientError(appError)))
+      case .success(let data):
+        do {
+          let participant = try JSONDecoder().decode(Participant.self, from: data)
+          completion(.success(participant))
+        } catch {
+          completion(.failure(.decodingError(error)))
+        }
+      }
+    }
+  }
+  
 
   
   /// <#Description#>
