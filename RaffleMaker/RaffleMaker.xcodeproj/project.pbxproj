@@ -11,7 +11,23 @@
 		589F31E926615B0200B75415 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F31E826615B0200B75415 /* ContentView.swift */; };
 		589F31EB26615B0400B75415 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 589F31EA26615B0400B75415 /* Assets.xcassets */; };
 		589F31EE26615B0400B75415 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 589F31ED26615B0400B75415 /* Preview Assets.xcassets */; };
+		589F31F726615C1600B75415 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F31F626615C1600B75415 /* NetworkHelper.swift */; };
+		589F31F926615C2F00B75415 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F31F826615C2F00B75415 /* AppError.swift */; };
+		589F31FB26615C6A00B75415 /* RaffleAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F31FA26615C6A00B75415 /* RaffleAPIClient.swift */; };
+		589F31FE26615E0900B75415 /* ParticipantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F31FD26615E0900B75415 /* ParticipantModel.swift */; };
+		589F320026615E1600B75415 /* RaffleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F31FF26615E1600B75415 /* RaffleModel.swift */; };
+		589F3216266197D000B75415 /* RaffleMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F3215266197D000B75415 /* RaffleMakerTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		589F3218266197D000B75415 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 589F31DB26615B0200B75415 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 589F31E226615B0200B75415;
+			remoteInfo = RaffleMaker;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		589F31E326615B0200B75415 /* RaffleMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaffleMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -20,10 +36,25 @@
 		589F31EA26615B0400B75415 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		589F31ED26615B0400B75415 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		589F31EF26615B0400B75415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		589F31F626615C1600B75415 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		589F31F826615C2F00B75415 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		589F31FA26615C6A00B75415 /* RaffleAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleAPIClient.swift; sourceTree = "<group>"; };
+		589F31FD26615E0900B75415 /* ParticipantModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipantModel.swift; sourceTree = "<group>"; };
+		589F31FF26615E1600B75415 /* RaffleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleModel.swift; sourceTree = "<group>"; };
+		589F3213266197D000B75415 /* RaffleMakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RaffleMakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		589F3215266197D000B75415 /* RaffleMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleMakerTests.swift; sourceTree = "<group>"; };
+		589F3217266197D000B75415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		589F31E026615B0200B75415 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		589F3210266197D000B75415 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -37,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				589F31E526615B0200B75415 /* RaffleMaker */,
+				589F3214266197D000B75415 /* RaffleMakerTests */,
 				589F31E426615B0200B75415 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				589F31E326615B0200B75415 /* RaffleMaker.app */,
+				589F3213266197D000B75415 /* RaffleMakerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -52,6 +85,8 @@
 		589F31E526615B0200B75415 /* RaffleMaker */ = {
 			isa = PBXGroup;
 			children = (
+				589F31FC26615DE200B75415 /* Models */,
+				589F31F526615B9600B75415 /* Networking */,
 				589F31E626615B0200B75415 /* RaffleMakerApp.swift */,
 				589F31E826615B0200B75415 /* ContentView.swift */,
 				589F31EA26615B0400B75415 /* Assets.xcassets */,
@@ -67,6 +102,34 @@
 				589F31ED26615B0400B75415 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		589F31F526615B9600B75415 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				589F31F626615C1600B75415 /* NetworkHelper.swift */,
+				589F31F826615C2F00B75415 /* AppError.swift */,
+				589F31FA26615C6A00B75415 /* RaffleAPIClient.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		589F31FC26615DE200B75415 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				589F31FD26615E0900B75415 /* ParticipantModel.swift */,
+				589F31FF26615E1600B75415 /* RaffleModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		589F3214266197D000B75415 /* RaffleMakerTests */ = {
+			isa = PBXGroup;
+			children = (
+				589F3215266197D000B75415 /* RaffleMakerTests.swift */,
+				589F3217266197D000B75415 /* Info.plist */,
+			);
+			path = RaffleMakerTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -89,6 +152,24 @@
 			productReference = 589F31E326615B0200B75415 /* RaffleMaker.app */;
 			productType = "com.apple.product-type.application";
 		};
+		589F3212266197D000B75415 /* RaffleMakerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 589F321A266197D000B75415 /* Build configuration list for PBXNativeTarget "RaffleMakerTests" */;
+			buildPhases = (
+				589F320F266197D000B75415 /* Sources */,
+				589F3210266197D000B75415 /* Frameworks */,
+				589F3211266197D000B75415 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				589F3219266197D000B75415 /* PBXTargetDependency */,
+			);
+			name = RaffleMakerTests;
+			productName = RaffleMakerTests;
+			productReference = 589F3213266197D000B75415 /* RaffleMakerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -100,6 +181,10 @@
 				TargetAttributes = {
 					589F31E226615B0200B75415 = {
 						CreatedOnToolsVersion = 12.5;
+					};
+					589F3212266197D000B75415 = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 589F31E226615B0200B75415;
 					};
 				};
 			};
@@ -117,6 +202,7 @@
 			projectRoot = "";
 			targets = (
 				589F31E226615B0200B75415 /* RaffleMaker */,
+				589F3212266197D000B75415 /* RaffleMakerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -131,6 +217,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		589F3211266197D000B75415 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -138,12 +231,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				589F31F926615C2F00B75415 /* AppError.swift in Sources */,
+				589F320026615E1600B75415 /* RaffleModel.swift in Sources */,
+				589F31FB26615C6A00B75415 /* RaffleAPIClient.swift in Sources */,
 				589F31E926615B0200B75415 /* ContentView.swift in Sources */,
+				589F31FE26615E0900B75415 /* ParticipantModel.swift in Sources */,
+				589F31F726615C1600B75415 /* NetworkHelper.swift in Sources */,
 				589F31E726615B0200B75415 /* RaffleMakerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		589F320F266197D000B75415 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				589F3216266197D000B75415 /* RaffleMakerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		589F3219266197D000B75415 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 589F31E226615B0200B75415 /* RaffleMaker */;
+			targetProxy = 589F3218266197D000B75415 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		589F31F026615B0400B75415 /* Debug */ = {
@@ -306,6 +420,46 @@
 			};
 			name = Release;
 		};
+		589F321B266197D000B75415 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3YV6C3YLPG;
+				INFOPLIST_FILE = RaffleMakerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.ericdavenport.RaffleMakerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RaffleMaker.app/RaffleMaker";
+			};
+			name = Debug;
+		};
+		589F321C266197D000B75415 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3YV6C3YLPG;
+				INFOPLIST_FILE = RaffleMakerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.ericdavenport.RaffleMakerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RaffleMaker.app/RaffleMaker";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -323,6 +477,15 @@
 			buildConfigurations = (
 				589F31F326615B0400B75415 /* Debug */,
 				589F31F426615B0400B75415 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		589F321A266197D000B75415 /* Build configuration list for PBXNativeTarget "RaffleMakerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				589F321B266197D000B75415 /* Debug */,
+				589F321C266197D000B75415 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

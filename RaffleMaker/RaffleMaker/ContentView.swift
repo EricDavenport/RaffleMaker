@@ -8,14 +8,36 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
+  @State private var raffles: [Raffle] = []
+  
+  private func loadRaffles() {
+    RaffleAPClient.loadAllRaffle { results in
+      switch results {
+      case .failure(let error):
+        print(error)
+      case .success(let raffles):
+        self.raffles = raffles
+      }
     }
+  }
+  
+  
+  
+  
+  var body: some View {
+  
+    List {
+//      ForEach(raffle)
+    }
+  }
 }
 
+
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+//  var raffles: [Raffle]
+
+
+  static var previews: some View {
+    ContentView()
+  }
 }
