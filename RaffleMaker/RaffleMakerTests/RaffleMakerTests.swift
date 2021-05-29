@@ -104,6 +104,23 @@ class RaffleMakerTests: XCTestCase {
     wait(for: [exp], timeout: 5)
   }
   
+  func testSelectWinner() {
+    let exp = XCTestExpectation(description: "Successfully selected a winner")
+    
+    do {
+      RaffleAPClient.selectWinner("L0ok5Lik3Y0uGotIt", 46) { result in
+        switch result {
+        case .failure(let appError):
+          XCTFail("Failed to selecta winner - this isn;t the correct way:\(appError)")
+        case .success(let facts):
+          XCTAssertTrue(facts)
+          exp.fulfill()
+        }
+      }
+    }
+    wait(for: [exp], timeout: 10)
+  }
+  
   
 }
 

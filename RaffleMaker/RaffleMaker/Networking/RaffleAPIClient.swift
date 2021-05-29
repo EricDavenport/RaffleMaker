@@ -101,6 +101,8 @@ struct RaffleAPClient {
     }
   }
   
+
+  
   /// <#Description#>
   /// - Parameters:
   ///   - name: <#name description#>
@@ -181,7 +183,40 @@ struct RaffleAPClient {
     }
   }
   
-  
-  
+  /// When this function is called a random winner for the raffle will be selected
+  /// - Parameters:
+  ///   - secretToken: <#secretToken description#>
+  ///   - id: <#id description#>
+  ///   - completion: <#completion description#>
+  /// - Returns: <#description#>
+  static func selectWinner(_ secretToken: String, _ id: Int, completion: @escaping (Result<Bool, AppError>) -> ()) {
+    let endpointString = "https://raffle-fs-app.herokuapp.com/api/raffles/\(id)/winner"
+    
+    guard let url = URL(string: endpointString) else {
+      completion(.failure(.badURL(endpointString)))
+      return
+    }
+    
+    do {
+      let tokenData = ["secret_token": secretToken]
+      let data = try JSONEncoder().encode(tokenData)
+      
+      var request = URLRequest(url: url)
+      request.httpMethod = "PUT"
+      request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+      request.httpBody = data
+      
+      NetworkHelper.shared.performDataTask(with: request) { result in
+        switch result {
+        case .failure(let appError):
+          completion(.failure(.networkClientError(appError)))
+        case .success:
+          completion(.success(true))
+        }
+      }
+    } catch {
+      completion(.failure(.encodingError(error)))
+    }
+  }
   
 }
