@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct RaffleAPClient {
+class RaffleAPClient: ObservableObject {
+  
+//  public var raffle: [Raffle] = []
   
   
   /// <#Description#>
@@ -31,8 +33,9 @@ struct RaffleAPClient {
         completion(.failure(.networkClientError(error)))
       case .success(let data):
         do {
-          let raffles = try JSONDecoder().decode([Raffle].self, from: data)
-          completion(.success(raffles))
+          let rafflesLoaded = try JSONDecoder().decode([Raffle].self, from: data)
+          completion(.success(rafflesLoaded))
+          
         } catch {
           completion(.failure(.decodingError(error)))
         }

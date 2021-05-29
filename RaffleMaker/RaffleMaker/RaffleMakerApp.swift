@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct RaffleMakerApp: App {
+//  @StateObject private var raffles = [Raffle]()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+          ContentView()
         }
     }
 }

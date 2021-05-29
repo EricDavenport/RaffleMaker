@@ -7,12 +7,16 @@
 
 import Foundation
 
-struct Raffle: Codable, Identifiable, Equatable {
-  let id: Int
-  let name: String
-  let createdAt: String
-  let raffledAt: String?
-  let winnerId: Int?
+class Raffle: Codable, Identifiable, Equatable, ObservableObject {
+  static func == (lhs: Raffle, rhs: Raffle) -> Bool {
+    lhs.id == rhs.id
+  }
+  
+  var id: Int
+  var name: String
+  var createdAt: String
+  var raffledAt: String?
+  var winnerId: Int?
   
   private enum CodingKeys: String, CodingKey {
     case id, name
@@ -21,5 +25,25 @@ struct Raffle: Codable, Identifiable, Equatable {
     case winnerId = "winner_id"
   }
   
+  init(id: Int, name: String, createdAt: String, raffledAt: String?, winnerId: Int?) {
+    self.id = id
+    self.name = name
+    self.createdAt = createdAt
+    self.raffledAt = raffledAt
+    self.winnerId = winnerId
+  }
+  
 }
 
+//extension Raffle {
+//  static var data: [Raffle] {
+//    self.fillUp()
+//  }
+//  private func fillUp() -> [Raffle] {
+//    RaffleAPClient.loadAllRaffle { result in
+//      switch result
+//      case
+//      }
+//    }
+//  }
+//}

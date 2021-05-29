@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		581843A02662ADB600D73967 /* RaffleListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5818439F2662ADB600D73967 /* RaffleListVM.swift */; };
+		581843A22662C1B800D73967 /* RaffleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581843A12662C1B800D73967 /* RaffleView.swift */; };
 		589F31E726615B0200B75415 /* RaffleMakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F31E626615B0200B75415 /* RaffleMakerApp.swift */; };
 		589F31E926615B0200B75415 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F31E826615B0200B75415 /* ContentView.swift */; };
 		589F31EB26615B0400B75415 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 589F31EA26615B0400B75415 /* Assets.xcassets */; };
@@ -30,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5818439F2662ADB600D73967 /* RaffleListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleListVM.swift; sourceTree = "<group>"; };
+		581843A12662C1B800D73967 /* RaffleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleView.swift; sourceTree = "<group>"; };
 		589F31E326615B0200B75415 /* RaffleMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RaffleMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		589F31E626615B0200B75415 /* RaffleMakerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleMakerApp.swift; sourceTree = "<group>"; };
 		589F31E826615B0200B75415 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 				589F31FC26615DE200B75415 /* Models */,
 				589F31F526615B9600B75415 /* Networking */,
 				589F31E626615B0200B75415 /* RaffleMakerApp.swift */,
+				581843A12662C1B800D73967 /* RaffleView.swift */,
+				5818439F2662ADB600D73967 /* RaffleListVM.swift */,
 				589F31E826615B0200B75415 /* ContentView.swift */,
 				589F31EA26615B0400B75415 /* Assets.xcassets */,
 				589F31EF26615B0400B75415 /* Info.plist */,
@@ -235,7 +241,9 @@
 				589F320026615E1600B75415 /* RaffleModel.swift in Sources */,
 				589F31FB26615C6A00B75415 /* RaffleAPIClient.swift in Sources */,
 				589F31E926615B0200B75415 /* ContentView.swift in Sources */,
+				581843A02662ADB600D73967 /* RaffleListVM.swift in Sources */,
 				589F31FE26615E0900B75415 /* ParticipantModel.swift in Sources */,
+				581843A22662C1B800D73967 /* RaffleView.swift in Sources */,
 				589F31F726615C1600B75415 /* NetworkHelper.swift in Sources */,
 				589F31E726615B0200B75415 /* RaffleMakerApp.swift in Sources */,
 			);

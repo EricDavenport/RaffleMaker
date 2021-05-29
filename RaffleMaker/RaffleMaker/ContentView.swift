@@ -8,35 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
-  @State private var raffles: [Raffle] = []
   
-  private func loadRaffles() {
-    RaffleAPClient.loadAllRaffle { results in
-      switch results {
-      case .failure(let error):
-        print(error)
-      case .success(let raffles):
-        self.raffles = raffles
-      }
-    }
-  }
-  
-  
-  
+  @ObservedObject var viewModel = RaffleListVM()
   
   var body: some View {
-  
+    
     List {
-//      ForEach(raffle)
-    }
+      ForEach(viewModel.raffles) { rfl in
+        Text("\(rfl.name)")
+      }
+    }.onAppear(perform: load)
+  }
+  
+  private func load() {
+    viewModel.loadRaffles()
   }
 }
 
 
 struct ContentView_Previews: PreviewProvider {
-//  var raffles: [Raffle]
-
-
   static var previews: some View {
     ContentView()
   }
