@@ -16,28 +16,30 @@ struct DetailView: View {
   @State var participants = [Participant]()
   @ObservedObject var detailViewModel = DetailVM()
   @State var winnerSelected = false
+  @State var needRefresh = false
   
   var body: some View {
     VStack {
-      Text("\(detailViewModel.raffle.name)")
       WinnerSelected(winnerId: .constant(detailViewModel.raffle.winnerId ?? -2), winnerSelected: $winnerSelected)
-      WinnerPartiButton(raffleId: .constant(detailViewModel.raffle.id), raffleName: .constant(detailViewModel.raffle.name), secretToken: .constant(userInput), winnerSelected: winnerSelected)
+      WinnerPartiButton(raffleId: .constant(detailViewModel.raffle.id), raffleName: .constant(detailViewModel.raffle.name), secretToken: .constant(userInput), winnerSelected: winnerSelected, needsRefresh: $needRefresh)
       Divider()
       TextField("Secret Token", text: $userInput)
         .padding()
         .textFieldStyle(RoundedBorderTextFieldStyle())
       Section {
         List {
-          Section(header: Text("Participants: \(participants.count)")) {
+          Section(header: Text("Participants")) {
             ForEach(detailViewModel.participants) { participant in
               ParticipantView(participant: .constant(participant))
             }
           }
-          .listStyle(InsetGroupedListStyle())
+          .listStyle(DefaultListStyle())
+          .onAppear(perform: loadRaffle)
         }
       }
     }
     .onAppear(perform: loadRaffle)
+    .navigationTitle("\(detailViewModel.raffle.name)")
   }
   
   private func loadRaffle() {

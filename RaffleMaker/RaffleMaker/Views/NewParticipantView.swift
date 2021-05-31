@@ -16,6 +16,8 @@ struct NewParticipantView: View {
   @Binding var isPresenting: Bool
   @State private var showAlert = false
   @State private var successAlert = false
+  @ObservedObject var dvm = DetailVM()
+  @Binding var needRefresh: Bool
   
   var body: some View {
     VStack {
@@ -38,9 +40,6 @@ struct NewParticipantView: View {
         })
         .alert(isPresented: $showAlert, content: {
           Alert(title: Text("Success"), message: Text("New participant added to raffle."), dismissButton: .default(Text("OK")))
-//          Alert(title: Text("Success"), primaryButton: .cancel(), secondaryButton: .default(Text("OK"), action: {
-//            isPresenting = false
-//          }))
         })
         .buttonStyle(MainButton(color: .green))
         
@@ -48,6 +47,7 @@ struct NewParticipantView: View {
           clear()
         }, label: {
           Text("Clear")
+            .cornerRadius(2.0)
         })
         .buttonStyle(MainButton(color: .blue))
       }
@@ -70,6 +70,8 @@ struct NewParticipantView: View {
       case .success:
         // TODO: Alert showing success
         self.showAlert = true
+        needRefresh = true
+        dvm.loadParticipants(raffleId)
         print("successully added participant")
       }
     }
@@ -86,6 +88,6 @@ struct NewParticipantView: View {
 
 struct NewParticipantView_Previews: PreviewProvider {
   static var previews: some View {
-    NewParticipantView(raffleId: .constant(46), isPresenting: .constant(false))
+    NewParticipantView(raffleId: .constant(46), isPresenting: .constant(false), needRefresh: .constant(false))
   }
 }

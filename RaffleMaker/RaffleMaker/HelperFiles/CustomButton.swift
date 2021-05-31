@@ -14,7 +14,7 @@ struct MainButton: ButtonStyle {
     configuration.label
       .frame(maxWidth: 150)
       .background(Color.white)
-      .padding(10)
+      .padding(5)
       .overlay(
         RoundedRectangle(cornerRadius: 10)
           .stroke(color, lineWidth: 1))

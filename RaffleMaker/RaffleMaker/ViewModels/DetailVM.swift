@@ -11,6 +11,7 @@ import SwiftUI
 class DetailVM: ObservableObject {
   @Published var raffle = Raffle(id: 0, name: "", createdAt: "", raffledAt: nil, winnerId: nil)
   @Published var participants = [Participant]()
+  var isPresenting = false
   
   func loadRaffle(_ raffledId: Int) {
     RaffleAPIClient.loadSingleRaffle(raffledId) { result in
@@ -38,9 +39,7 @@ class DetailVM: ObservableObject {
     }
   }
   
-  func selectWinner() {
-    
-  }
+  
   
   
   

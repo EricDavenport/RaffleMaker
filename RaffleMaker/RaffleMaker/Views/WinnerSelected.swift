@@ -24,7 +24,7 @@ struct WinnerSelected: View {
         .bold() 
     }
     .opacity(winnerSelected ? 1 : 0)
-    .animation(.easeOut(duration: 2.0))
+    .animation(.easeOut)
   }
 }
 

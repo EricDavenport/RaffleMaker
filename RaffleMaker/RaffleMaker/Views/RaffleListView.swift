@@ -15,6 +15,7 @@ struct RaffleListView: View {
   @State private var search = ""
   @State private var newRaffleIsPresenting: Bool = false
   @State private var showingAlert: Bool = false
+  @State var needsRefresh = false
   
   var body: some View {
     NavigationView {
@@ -24,9 +25,10 @@ struct RaffleListView: View {
         ForEach(raffleAPI.raffles) { rfl in
           NavigationLink(destination: DetailView(rafID: rfl.id, secretToken: rfl.secretToken ?? "", winnerSelected: (rfl.winnerId != nil) ? true : false)) {
             RaffleView(raffle: rfl)
+
           }
         }
-        
+        .onAppear(perform: load)
       }
       .onAppear(perform: load)
       .navigationBarItems(trailing: Button(action: {
@@ -35,10 +37,11 @@ struct RaffleListView: View {
         Text("New Raffle")
       }))
       .sheet(isPresented: $newRaffleIsPresenting, content: {
-        NewRaffleView(isPresenting: $newRaffleIsPresenting)
+        NewRaffleView(isPresenting: $newRaffleIsPresenting, needsRefresh: $needsRefresh)
       })
       .navigationTitle("Ribble Raffle")
     }
+    .onAppear(perform: load)
   }
   
   private func load() {
