@@ -12,6 +12,10 @@ class RaffleAPIClient: ObservableObject {
 //  public var raffle: [Raffle] = []
   @Published var raffles = [Raffle]()
   
+  func filterRaffles(search: String) {
+    raffles = raffles.filter { $0.name.contains(search)}
+  }
+  
   func fetchRaffles() {
 //    loadAllRaffles()
     let endpointString = "https://raffle-fs-app.herokuapp.com/api/raffles"

@@ -15,32 +15,25 @@ struct DetailView: View {
   @State var userInput = ""
   @State var participants = [Participant]()
   @ObservedObject var detailViewModel = DetailVM()
+  @State var winnerSelected = false
   
   var body: some View {
     VStack {
       Text("\(detailViewModel.raffle.name)")
-      Text("\(detailViewModel.raffle.id)")
-      Image(systemName: "star")
-      Divider()
-      WinnerPartiButton(raffleId: .constant(detailViewModel.raffle.id), raffleName: .constant(detailViewModel.raffle.name), secretToken: .constant(userInput))
-        .frame(height: 200)
+      WinnerSelected(winnerId: .constant(detailViewModel.raffle.winnerId ?? -2), winnerSelected: $winnerSelected)
+      WinnerPartiButton(raffleId: .constant(detailViewModel.raffle.id), raffleName: .constant(detailViewModel.raffle.name), secretToken: .constant(userInput), winnerSelected: winnerSelected)
       Divider()
       TextField("Secret Token", text: $userInput)
         .padding()
+        .textFieldStyle(RoundedBorderTextFieldStyle())
       Section {
         List {
           Section(header: Text("Participants: \(participants.count)")) {
             ForEach(detailViewModel.participants) { participant in
-              VStack {
-                HStack {
-                  Text("\(participant.firstName) \(participant.lastName)")
-                  Text("\(participant.raffleId)")
-                }
-                Text("\(participant.email)")
-                Text("\(participant.phone ?? "No number")")
-              }
+              ParticipantView(participant: .constant(participant))
             }
           }
+          .listStyle(InsetGroupedListStyle())
         }
       }
     }

@@ -13,22 +13,37 @@ struct NewParticipantView: View {
   @State private var email = ""
   @State private var phone = ""
   @Binding var raffleId: Int
+  @Binding var isPresenting: Bool
+  @State private var showAlert = false
+  @State private var successAlert = false
   
   var body: some View {
     VStack {
       Form {
-        TextField("First Name", text: $firstName)
-        TextField("Last Name", text: $lastName)
-        TextField("Email", text: $email)
-        TextField("Phone number (Optional)", text: $phone)
+        Section(header: Text("Enter new participant information")) {
+          TextField("First Name", text: $firstName)
+          TextField("Last Name", text: $lastName)
+          TextField("Email", text: $email)
+        }
+        Section(header: Text("Optional")) {
+          TextField("Phone number", text: $phone)
+        }
       }
       HStack {
         Button(action: {
           addNewParticipant()
+          isPresenting = showAlert
         }, label: {
           Text("Save")
         })
+        .alert(isPresented: $showAlert, content: {
+          Alert(title: Text("Success"), message: Text("New participant added to raffle."), dismissButton: .default(Text("OK")))
+//          Alert(title: Text("Success"), primaryButton: .cancel(), secondaryButton: .default(Text("OK"), action: {
+//            isPresenting = false
+//          }))
+        })
         .buttonStyle(MainButton(color: .green))
+        
         Button(action: {
           clear()
         }, label: {
@@ -54,6 +69,7 @@ struct NewParticipantView: View {
         print("failed to add participant:\(appError)")
       case .success:
         // TODO: Alert showing success
+        self.showAlert = true
         print("successully added participant")
       }
     }
@@ -65,10 +81,11 @@ struct NewParticipantView: View {
     email = ""
     phone = ""
   }
+  
 }
 
 struct NewParticipantView_Previews: PreviewProvider {
   static var previews: some View {
-    NewParticipantView(raffleId: .constant(46))
+    NewParticipantView(raffleId: .constant(46), isPresenting: .constant(false))
   }
 }

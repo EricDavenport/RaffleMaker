@@ -12,9 +12,15 @@ struct RaffleView: View {
   
   var body: some View {
     VStack {
-      HStack() {
+      HStack {
+        if raffle.winnerId != nil {
+          Image(systemName: "checkmark.circle")
+            .padding()
+            .foregroundColor(.green)
+        }
         Spacer()
-        Text("Raffle ID  \(raffle.id)")
+        Text("Raffle #: \(raffle.id)")
+          .padding(.trailing)
       }
       Spacer()
         .frame(height: 30)
@@ -25,10 +31,18 @@ struct RaffleView: View {
           .frame(width: 60, height: 60, alignment: Alignment.center)
           .scaledToFit()
           .clipped()
-        Text("\(raffle.winnerId ?? -1)")
-          .bold()
+        if let winnerId = raffle.winnerId {
+          Text("\(winnerId)")
+            .bold()
+        }
       }
-      Text("Winner ID")
+      if raffle.winnerId != nil {
+        Text("Winner ID")
+      } else {
+        Text("Draw a winner!")
+          .foregroundColor(.blue)
+      }
+      
     }
   }
 }

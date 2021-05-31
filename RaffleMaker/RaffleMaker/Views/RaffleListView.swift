@@ -12,16 +12,17 @@ struct RaffleListView: View {
   @ObservedObject var viewModel = RaffleListVM()
   @ObservedObject var raffleAPI = RaffleAPIClient()
   @State private var currentID = 0
-  
-  // presenting booleans
+  @State private var search = ""
   @State private var newRaffleIsPresenting: Bool = false
   @State private var showingAlert: Bool = false
   
   var body: some View {
     NavigationView {
       List {
+        TextField("Search Name", text: $search)
+          .textFieldStyle(RoundedBorderTextFieldStyle())
         ForEach(raffleAPI.raffles) { rfl in
-          NavigationLink(destination: DetailView(rafID: rfl.id, secretToken: rfl.secretToken ?? "")) {
+          NavigationLink(destination: DetailView(rafID: rfl.id, secretToken: rfl.secretToken ?? "", winnerSelected: (rfl.winnerId != nil) ? true : false)) {
             RaffleView(raffle: rfl)
           }
         }
@@ -36,10 +37,8 @@ struct RaffleListView: View {
       .sheet(isPresented: $newRaffleIsPresenting, content: {
         NewRaffleView(isPresenting: $newRaffleIsPresenting)
       })
-      
       .navigationTitle("Ribble Raffle")
     }
-    
   }
   
   private func load() {

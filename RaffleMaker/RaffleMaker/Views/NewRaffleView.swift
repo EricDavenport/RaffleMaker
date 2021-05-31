@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NewRaffleView: View {
   // var to control state of current sheet(view)
-  @Environment(\.presentationMode) var presentationMode
+//  @Environment(\.presentationMode) var presentationMode
   
   @Binding var isPresenting: Bool
   @State private var raffleName: String = ""
