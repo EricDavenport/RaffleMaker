@@ -17,12 +17,14 @@ class Raffle: Codable, Identifiable, Equatable, ObservableObject {
   var createdAt: String
   var raffledAt: String?
   var winnerId: Int?
+  var secretToken: String?
   
   private enum CodingKeys: String, CodingKey {
     case id, name
     case createdAt = "created_at"
     case raffledAt = "raffled_at"
     case winnerId = "winner_id"
+    case secretToken = "secret_token"
   }
   
   init(id: Int, name: String, createdAt: String, raffledAt: String?, winnerId: Int?) {

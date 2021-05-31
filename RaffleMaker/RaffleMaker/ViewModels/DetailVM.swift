@@ -38,6 +38,10 @@ class DetailVM: ObservableObject {
     }
   }
   
+  func selectWinner() {
+    
+  }
+  
   
   
 }

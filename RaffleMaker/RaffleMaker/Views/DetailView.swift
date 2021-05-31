@@ -9,8 +9,10 @@ import SwiftUI
 
 struct DetailView: View {
   
+  
   @State var rafID = 46
-  //  @State var raffle = Raffle(id: -1, name: "", createdAt: "", raffledAt: nil, winnerId: nil)
+  var secretToken = ""
+  @State var userInput = ""
   @State var participants = [Participant]()
   @ObservedObject var detailViewModel = DetailVM()
   
@@ -18,7 +20,10 @@ struct DetailView: View {
     VStack {
       Text("\(detailViewModel.raffle.name)")
       Text("\(detailViewModel.raffle.id)")
-      
+      WinnerPartiButton(raffleId: .constant(detailViewModel.raffle.id), raffleName: .constant(detailViewModel.raffle.name), secretToken: .constant(userInput))
+      Divider()
+      TextField("Secret Token", text: $userInput)
+        .padding()
       Section {
         List {
           Section(header: Text("Participants")) {
@@ -39,13 +44,13 @@ struct DetailView: View {
     .onAppear(perform: loadRaffle)
   }
   
-  private func clear() {
-    
-  }
-  
   private func loadRaffle() {
     detailViewModel.loadRaffle(rafID)
     detailViewModel.loadParticipants(rafID)
+  }
+  
+  private func isSecretCorrect() -> Bool {
+    return secretToken == userInput
   }
 }
 

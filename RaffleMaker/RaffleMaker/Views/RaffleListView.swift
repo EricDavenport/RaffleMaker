@@ -21,14 +21,9 @@ struct RaffleListView: View {
     NavigationView {
       List {
         ForEach(raffleAPI.raffles) { rfl in
-          RaffleView(raffle: rfl)
-            .onTapGesture {
-              self.showingAlert = true
-              self.currentID = rfl.id
-            }
-            .sheet(isPresented: $showingAlert, content: {
-              DetailView(rafID: currentID)
-            })
+          NavigationLink(destination: DetailView(rafID: rfl.id, secretToken: rfl.secretToken ?? "")) {
+            RaffleView(raffle: rfl)
+          }
         }
         
       }
