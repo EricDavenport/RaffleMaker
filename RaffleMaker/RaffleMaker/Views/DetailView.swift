@@ -20,13 +20,16 @@ struct DetailView: View {
     VStack {
       Text("\(detailViewModel.raffle.name)")
       Text("\(detailViewModel.raffle.id)")
+      Image(systemName: "star")
+      Divider()
       WinnerPartiButton(raffleId: .constant(detailViewModel.raffle.id), raffleName: .constant(detailViewModel.raffle.name), secretToken: .constant(userInput))
+        .frame(height: 200)
       Divider()
       TextField("Secret Token", text: $userInput)
         .padding()
       Section {
         List {
-          Section(header: Text("Participants")) {
+          Section(header: Text("Participants: \(participants.count)")) {
             ForEach(detailViewModel.participants) { participant in
               VStack {
                 HStack {

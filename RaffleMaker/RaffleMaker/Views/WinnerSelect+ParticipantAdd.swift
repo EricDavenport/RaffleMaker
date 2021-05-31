@@ -15,7 +15,7 @@ struct WinnerPartiButton: View {
   
   
   var body: some View {
-    NavigationView {
+//    NavigationView {
       HStack {
         Button(action: {
           print(secretToken)
@@ -43,8 +43,10 @@ struct WinnerPartiButton: View {
           NewParticipantView(raffleId: $raffleId)
         })
       }
-      .padding()
-    }
+      
+//      .padding()
+//    }
+    .frame(height: 100)
   }
 }
 
