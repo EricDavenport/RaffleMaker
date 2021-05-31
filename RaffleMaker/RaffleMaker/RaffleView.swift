@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct RaffleView: View {
-  @EnvironmentObject var raffle: Raffle
+  @StateObject var raffle: Raffle
+  
   var body: some View {
     VStack {
       HStack() {
@@ -34,7 +35,7 @@ struct RaffleView: View {
 
 struct RaffleView_Previews: PreviewProvider {
   static var previews: some View {
-    RaffleView().environmentObject(Raffle(id: 47, name: "Did you figure it out", createdAt: "2021-05-29T00:25:40.274Z", raffledAt: nil, winnerId: nil))
+    RaffleView(raffle:Raffle(id: 47, name: "Did you figure it out", createdAt: "2021-05-29T00:25:40.274Z", raffledAt: nil, winnerId: nil))
       .previewLayout(.sizeThatFits)
   }
 }

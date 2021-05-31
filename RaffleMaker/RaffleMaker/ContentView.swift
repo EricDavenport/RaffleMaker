@@ -11,13 +11,39 @@ struct ContentView: View {
   
   @ObservedObject var viewModel = RaffleListVM()
   
+  // presenting booleans
+  @State private var newRaffleIsPresenting: Bool = false
+  @State private var showingAlert: Bool = false
+  
   var body: some View {
-    
-    List {
-      ForEach(viewModel.raffles) { rfl in
-        Text("\(rfl.name)")
+    NavigationView {
+      List {
+        ForEach(viewModel.raffles) { rfl in
+          RaffleView(raffle: rfl)
+            .onTapGesture(perform: {
+              self.showingAlert = true
+            })
+            .sheet(isPresented: $showingAlert, content: {
+              DetailView()
+//                .background(opacity(0.1))
+            })
+        }
+        
       }
-    }.onAppear(perform: load)
+      .onAppear(perform: load)
+      .navigationTitle("Ribble Raffle")
+      .navigationBarItems(trailing: Button(action: {
+        // TODO: add bool for showing add raffle view
+        self.newRaffleIsPresenting = true
+      }, label: {
+        Image(systemName: "plus")
+      }))
+      .sheet(isPresented: $newRaffleIsPresenting, content: {
+        NavigationView {
+          NewRaffleView()
+        }
+      })
+    }
   }
   
   private func load() {
