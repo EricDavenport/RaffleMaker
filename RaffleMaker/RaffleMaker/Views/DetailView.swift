@@ -8,12 +8,44 @@
 import SwiftUI
 
 struct DetailView: View {
-  @State var raffle: Raffle!
+  
+  @State var rafID = 46
+  //  @State var raffle = Raffle(id: -1, name: "", createdAt: "", raffledAt: nil, winnerId: nil)
+  @State var participants = [Participant]()
+  @ObservedObject var detailViewModel = DetailVM()
   
   var body: some View {
     VStack {
-      Text("Detail View")
+      Text("\(detailViewModel.raffle.name)")
+      Text("\(detailViewModel.raffle.id)")
+      
+      Section {
+        List {
+          Section(header: Text("Participants")) {
+            ForEach(detailViewModel.participants) { participant in
+              VStack {
+                HStack {
+                  Text("\(participant.firstName) \(participant.lastName)")
+                  Text("\(participant.raffleId)")
+                }
+                Text("\(participant.email)")
+                Text("\(participant.phone ?? "No number")")
+              }
+            }
+          }
+        }
+      }
     }
+    .onAppear(perform: loadRaffle)
+  }
+  
+  private func clear() {
+    
+  }
+  
+  private func loadRaffle() {
+    detailViewModel.loadRaffle(rafID)
+    detailViewModel.loadParticipants(rafID)
   }
 }
 

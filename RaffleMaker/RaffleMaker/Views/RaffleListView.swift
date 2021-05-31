@@ -7,9 +7,11 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct RaffleListView: View {
   
   @ObservedObject var viewModel = RaffleListVM()
+  @ObservedObject var raffleAPI = RaffleAPIClient()
+  @State private var currentID = 0
   
   // presenting booleans
   @State private var newRaffleIsPresenting: Bool = false
@@ -18,42 +20,43 @@ struct ContentView: View {
   var body: some View {
     NavigationView {
       List {
-        ForEach(viewModel.raffles) { rfl in
+        ForEach(raffleAPI.raffles) { rfl in
           RaffleView(raffle: rfl)
-            .onTapGesture(perform: {
+            .onTapGesture {
               self.showingAlert = true
-            })
+              self.currentID = rfl.id
+            }
             .sheet(isPresented: $showingAlert, content: {
-              DetailView()
-//                .background(opacity(0.1))
+              DetailView(rafID: currentID)
             })
         }
         
       }
       .onAppear(perform: load)
-      .navigationTitle("Ribble Raffle")
       .navigationBarItems(trailing: Button(action: {
-        // TODO: add bool for showing add raffle view
-        self.newRaffleIsPresenting = true
+        newRaffleIsPresenting = true
       }, label: {
-        Image(systemName: "plus")
+        Text("New Raffle")
       }))
       .sheet(isPresented: $newRaffleIsPresenting, content: {
-        NavigationView {
-          NewRaffleView()
-        }
+        NewRaffleView(isPresenting: $newRaffleIsPresenting)
       })
+      
+      .navigationTitle("Ribble Raffle")
     }
+    
   }
   
   private func load() {
-    viewModel.loadRaffles()
+    if newRaffleIsPresenting == false {
+      raffleAPI.fetchRaffles()
+    }
   }
 }
 
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    RaffleListView()
   }
 }

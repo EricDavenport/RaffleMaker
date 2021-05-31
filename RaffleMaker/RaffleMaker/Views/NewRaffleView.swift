@@ -11,6 +11,7 @@ struct NewRaffleView: View {
   // var to control state of current sheet(view)
   @Environment(\.presentationMode) var presentationMode
   
+  @Binding var isPresenting: Bool
   @State private var raffleName: String = ""
   @State private var secretToken: String = ""
   
@@ -23,13 +24,13 @@ struct NewRaffleView: View {
       HStack {
         Spacer()
       Button(action: {
-        RaffleAPClient.createRaffle(raffleName, secretToken) { result in
+        RaffleAPIClient.createRaffle(raffleName, secretToken) { result in
           switch result {
-          case .failure(let _):
+          case .failure:
             break
           case .success(let pass):
             if pass {
-              presentationMode.wrappedValue.dismiss()
+              isPresenting = false
             }
           }
         }
@@ -44,7 +45,7 @@ struct NewRaffleView: View {
 
 struct NewRaffleView_Previews: PreviewProvider {
   static var previews: some View {
-    NewRaffleView()
+    NewRaffleView(isPresenting: .constant(false))
   }
 }
 

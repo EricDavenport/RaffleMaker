@@ -7,10 +7,39 @@
 
 import Foundation
 
-class RaffleAPClient: ObservableObject {
+class RaffleAPIClient: ObservableObject {
   
 //  public var raffle: [Raffle] = []
+  @Published var raffles = [Raffle]()
   
+  func fetchRaffles() {
+//    loadAllRaffles()
+    let endpointString = "https://raffle-fs-app.herokuapp.com/api/raffles"
+    
+    // create url from the string(above)
+    guard let url = URL(string: endpointString) else {
+      return
+    }
+    
+    let request = URLRequest(url: url)
+    
+    NetworkHelper.shared.performDataTask(with: request) { (result) in
+      switch result {
+      case .failure:
+        break
+      case .success(let data):
+        do {
+          let rafflesLoaded = try JSONDecoder().decode([Raffle].self, from: data)
+          DispatchQueue.main.async {
+            self.raffles = rafflesLoaded.sorted { $0.id < $1.id }
+          }
+          
+        } catch {
+//          completion(.failure(.decodingError(error)))
+        }
+      }
+    }
+  }
   
   /// <#Description#>
   /// - Parameter completion: <#completion description#>

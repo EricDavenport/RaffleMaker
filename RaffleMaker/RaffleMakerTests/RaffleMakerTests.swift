@@ -17,7 +17,7 @@ class RaffleMakerTests: XCTestCase {
     let exp = XCTestExpectation(description: "Fully loaded")
     
     do {
-      RaffleAPClient.loadAllRaffle { results in
+      RaffleAPIClient.loadAllRaffle { results in
         switch results {
         case .failure(let error):
           (XCTFail("Failed to load raffle list: \(error)"))
@@ -37,7 +37,7 @@ class RaffleMakerTests: XCTestCase {
     let exp = XCTestExpectation(description: "Raffle loaded")
     
     do {
-      RaffleAPClient.loadSingleRaffle(46) { result in
+      RaffleAPIClient.loadSingleRaffle(46) { result in
         switch result {
         case .failure(let appError):
           XCTFail("Failed to load correct raffle \(appError)")
@@ -73,7 +73,7 @@ class RaffleMakerTests: XCTestCase {
     let exp = XCTestExpectation(description: "Successfully added participant to raffle")
     
     do {
-      RaffleAPClient.addParticipant(46, firstName: "Eric", lastname: "D2", email: "ed2@email.com", phone: nil) { result in
+      RaffleAPIClient.addParticipant(46, firstName: "Eric", lastname: "D2", email: "ed2@email.com", phone: nil) { result in
         switch result {
         case .failure(let error):
           XCTFail("Failed to add participant: \(error)")
@@ -91,7 +91,7 @@ class RaffleMakerTests: XCTestCase {
     let exp = XCTestExpectation(description: "Successfully loaded participant list")
 
     do {
-      RaffleAPClient.loadParticipants(46) { result in
+      RaffleAPIClient.loadParticipants(46) { result in
         switch result {
         case .failure(let appError):
           XCTFail("Failed to load participant list: \(appError)")
@@ -108,7 +108,7 @@ class RaffleMakerTests: XCTestCase {
     let exp = XCTestExpectation(description: "Successfully selected a winner")
     
     do {
-      RaffleAPClient.selectWinner("L0ok5Lik3Y0uGotIt", 46) { result in
+      RaffleAPIClient.selectWinner("L0ok5Lik3Y0uGotIt", 46) { result in
         switch result {
         case .failure(let appError):
           XCTFail("Failed to selecta winner - this isn;t the correct way:\(appError)")
@@ -127,7 +127,7 @@ class RaffleMakerTests: XCTestCase {
     let exp = XCTestExpectation(description: "Winner successfully loaded")
     
     do {
-      RaffleAPClient.loadWinner(46) { result in
+      RaffleAPIClient.loadWinner(46) { result in
         switch result {
         case .failure(let appError):
           XCTFail("Failed to load winner: \(appError)")

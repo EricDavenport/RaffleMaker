@@ -13,7 +13,7 @@ class RaffleListVM: ObservableObject {
 //  @Published var singleRaffle: Raffle
   
   func loadRaffles() {
-    RaffleAPClient.loadAllRaffle { result in
+    RaffleAPIClient.loadAllRaffle { result in
       switch result {
       case .failure:
         print("failed to load")
