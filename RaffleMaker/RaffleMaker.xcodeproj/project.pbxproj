@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		581843A02662ADB600D73967 /* RaffleListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5818439F2662ADB600D73967 /* RaffleListVM.swift */; };
 		581843A22662C1B800D73967 /* RaffleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581843A12662C1B800D73967 /* RaffleView.swift */; };
 		583ED8712664684400998E19 /* DetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583ED8702664684400998E19 /* DetailVM.swift */; };
 		583ED8732665253500998E19 /* WinnerSelect+ParticipantAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583ED8722665253500998E19 /* WinnerSelect+ParticipantAdd.swift */; };
@@ -40,7 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5818439F2662ADB600D73967 /* RaffleListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleListVM.swift; sourceTree = "<group>"; };
 		581843A12662C1B800D73967 /* RaffleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleView.swift; sourceTree = "<group>"; };
 		583ED8702664684400998E19 /* DetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVM.swift; sourceTree = "<group>"; };
 		583ED8722665253500998E19 /* WinnerSelect+ParticipantAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WinnerSelect+ParticipantAdd.swift"; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 		583ED86F2664682300998E19 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				5818439F2662ADB600D73967 /* RaffleListVM.swift */,
 				583ED8702664684400998E19 /* DetailVM.swift */,
 			);
 			path = ViewModels;
@@ -295,7 +292,6 @@
 				583ED87D2665708D00998E19 /* WinnerSelected.swift in Sources */,
 				583ED87726652CFC00998E19 /* NewParticipantView.swift in Sources */,
 				583ED8732665253500998E19 /* WinnerSelect+ParticipantAdd.swift in Sources */,
-				581843A02662ADB600D73967 /* RaffleListVM.swift in Sources */,
 				58E9C4932664494C00CE14F0 /* DetailView.swift in Sources */,
 				589F31FE26615E0900B75415 /* ParticipantModel.swift in Sources */,
 				581843A22662C1B800D73967 /* RaffleView.swift in Sources */,

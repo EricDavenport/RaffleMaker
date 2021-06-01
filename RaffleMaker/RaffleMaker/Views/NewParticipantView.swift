@@ -35,6 +35,7 @@ struct NewParticipantView: View {
         }
       }
       HStack {
+        // Save button-> changes the necessary toggled var to change ui/presentation
         Button(action: {
           addNewParticipant()
           showAlert = true
@@ -45,6 +46,7 @@ struct NewParticipantView: View {
         })
         .buttonStyle(MainButton(color: .green))
         
+        // Button to clear tecxtFields
         Button(action: {
           clear()
         }, label: {

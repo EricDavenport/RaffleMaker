@@ -8,7 +8,7 @@
 import Foundation
 
 
-/// <#Description#>
+/// Enum created to handle app errors within the URLSession file. Options cover the possible errors that can occur during API calls made using URLSession
 enum AppError: Error, CustomStringConvertible {
   case badURL(String) // associated value
   case noResponse

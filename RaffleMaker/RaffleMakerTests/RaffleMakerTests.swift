@@ -49,25 +49,25 @@ class RaffleMakerTests: XCTestCase {
     }
     wait(for: [exp], timeout: 5)
   }
-  //MARK: CreateTest
-  //      test works - commented out to avoid constant creation
-//  func testRaffleCreation() {
-//
-//    let exp = XCTestExpectation(description: "raffle successfully posted")
-//
-//    do {
-//      RaffleAPClient.createRaffle("Did you figure it out", "L0ok5Lik3Y0uGotIt") { result in
-//        switch result {
-//        case .failure(let appError):
-//          XCTFail("Failed: \(appError)")
-//        case .success(let facts):
-//          XCTAssertTrue(facts, "Successfully posted - Check postman")
-//          exp.fulfill()
-//        }
-//      }
-//    }
-//    wait(for: [exp], timeout: 5)
-//  }
+  MARK: CreateTest
+        test works - commented out to avoid constant creation
+  func testRaffleCreation() {
+
+    let exp = XCTestExpectation(description: "raffle successfully posted")
+
+    do {
+      RaffleAPClient.createRaffle("Did you figure it out", "L0ok5Lik3Y0uGotIt") { result in
+        switch result {
+        case .failure(let appError):
+          XCTFail("Failed: \(appError)")
+        case .success(let facts):
+          XCTAssertTrue(facts, "Successfully posted - Check postman")
+          exp.fulfill()
+        }
+      }
+    }
+    wait(for: [exp], timeout: 5)
+  }
   
   func testAddParticipant() {
     let exp = XCTestExpectation(description: "Successfully added participant to raffle")

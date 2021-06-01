@@ -9,7 +9,6 @@ import Foundation
 
 class RaffleAPIClient: ObservableObject {
   
-  //  public var raffle: [Raffle] = []
   @Published var raffles = [Raffle]()
   
   func filterRaffles(search: String) {
@@ -17,7 +16,6 @@ class RaffleAPIClient: ObservableObject {
   }
   
   func fetchRaffles() {
-    //    loadAllRaffles()
     let endpointString = "https://raffle-fs-app.herokuapp.com/api/raffles"
     
     // create url from the string(above)
@@ -76,11 +74,11 @@ class RaffleAPIClient: ObservableObject {
     }
   }
   
-  /// <#Description#>
+  /// Function used to load single raffle if not all raffles are needed
   /// - Parameters:
-  ///   - id: <#id description#>
-  ///   - completion: <#completion description#>
-  /// - Returns: <#description#>
+  ///   - id: ID number of the raffle to be loaded
+  ///   - completion: escaping closure used  tp allow raffles loaded too populate a property
+  /// - Returns: @escaping closure -> results return after function completes escaping is the raffles
   static func loadSingleRaffle(_ id: Int, completion: @escaping (Result<Raffle, AppError>) -> ()) {
     let endpointString = "https://raffle-fs-app.herokuapp.com/api/raffles/\(id)"
     
@@ -109,9 +107,9 @@ class RaffleAPIClient: ObservableObject {
   
   /// Load all participants for a specified raffle
   /// - Parameters:
-  ///   - id: <#id description#>
-  ///   - completion: <#completion description#>
-  /// - Returns: <#description#>
+  ///   - id: ID number for a specific raffle in order to load all participants - used in URL
+  ///   - completion: @escaping closiure delivering the set of participants
+  /// - Returns: if completes delivers array of Participannts or AppErro if fail
   static func loadParticipants(_ id: Int, completion: @escaping (Result<[Participant], AppError>) -> ()) {
     let endpointString = "https://raffle-fs-app.herokuapp.com/api/raffles/\(id)/participants"
     
@@ -138,11 +136,11 @@ class RaffleAPIClient: ObservableObject {
   }
   
   
-  /// <#Description#>
+  /// Loads the winner of the given raffle if one exist
   /// - Parameters:
-  ///   - id: <#id description#>
-  ///   - completion: <#completion description#>
-  /// - Returns: <#description#>
+  ///   - id: ID of the raffle that is being checked for a winner
+  ///   - completion: @escaping cloure value given outside of func closure allows func to compile withouterrors
+  /// - Returns: Return a single participant after the func compiles and completes
   static func loadWinner(_ id: Int, completion: @escaping (Result<Participant, AppError>) -> ()) {
     let endpointURLString = "https://raffle-fs-app.herokuapp.com/api/raffles/\(id)/winner"
     
@@ -170,12 +168,12 @@ class RaffleAPIClient: ObservableObject {
   
   
   
-  /// <#Description#>
+  /// Used in order to create a new raffl
   /// - Parameters:
-  ///   - name: <#name description#>
-  ///   - secretToken: <#secretToken description#>
-  ///   - completion: <#completion description#>
-  /// - Returns: <#description#>
+  ///   - name: Required property for creating new raffle(String)
+  ///   - secretToken: Required string Property in order to corretly make a new raffle String of any value
+  ///   - completion: @escaping closure as the closure should finish after the function finishes
+  /// - Returns: Returns a Boolean value if successfully able to crteate a new raffle or not
   static func createRaffle(_ name: String, _ secretToken: String, completion: @escaping (Result<Bool, AppError>) -> ()) {
     let raffle = ["name": name, "secret_token": secretToken]
     let endpointString = "https://raffle-fs-app.herokuapp.com/api/raffles"
@@ -252,10 +250,10 @@ class RaffleAPIClient: ObservableObject {
   
   /// When this function is called a random winner for the raffle will be selected
   /// - Parameters:
-  ///   - secretToken: <#secretToken description#>
-  ///   - id: <#id description#>
-  ///   - completion: <#completion description#>
-  /// - Returns: <#description#>
+  ///   - secretToken: User input String value to check if the current user can run the select winner operation
+  ///   - id: ID of the raffle to load in order to obtain the secret token
+  ///   - completion: @escaping closure allowing func to complete after compiling
+  /// - Returns: returns a Boolean value afterwards if the secretToken was correct and a winner was selected
   static func selectWinner(_ secretToken: String, _ id: Int, completion: @escaping (Result<Bool, AppError>) -> ()) {
     let endpointString = "https://raffle-fs-app.herokuapp.com/api/raffles/\(id)/winner"
     

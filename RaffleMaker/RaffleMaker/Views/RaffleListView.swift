@@ -9,7 +9,6 @@ import SwiftUI
 
 struct RaffleListView: View {
   
-  @ObservedObject var viewModel = RaffleListVM()
   @ObservedObject var raffleAPI = RaffleAPIClient()
   @State private var currentID = 0
   @State private var search = ""
@@ -24,7 +23,7 @@ struct RaffleListView: View {
         TextField("Search Name", text: $search)
           .textFieldStyle(RoundedBorderTextFieldStyle())
         ForEach(raffleAPI.raffles) { rfl in
-          NavigationLink(destination: DetailView(rafID: rfl.id, secretToken: rfl.secretToken ?? "", winnerSelected: (rfl.winnerId != nil) ? true : false)) {
+          NavigationLink(destination: DetailView(secretToken: rfl.secretToken ?? "", rafID: rfl.id,  winnerSelected: (rfl.winnerId != nil) ? true : false)) {
             RaffleView(raffle: rfl)
             
           }
@@ -46,11 +45,11 @@ struct RaffleListView: View {
     .onAppear(perform: load)
   }
   
+  /// Function checks if new the newRaffleView screen is still present if false reloads the array of raffles to update UI
   private func load() {
     if newRaffleIsPresenting == false {
       raffleAPI.fetchRaffles()
     }
-    print("loda0ed")
   }
 }
 

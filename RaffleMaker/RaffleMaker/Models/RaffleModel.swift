@@ -37,15 +37,3 @@ class Raffle: Codable, Identifiable, Equatable, ObservableObject {
   
 }
 
-//extension Raffle {
-//  static var data: [Raffle] {
-//    self.fillUp()
-//  }
-//  private func fillUp() -> [Raffle] {
-//    RaffleAPClient.loadAllRaffle { result in
-//      switch result
-//      case
-//      }
-//    }
-//  }
-//}

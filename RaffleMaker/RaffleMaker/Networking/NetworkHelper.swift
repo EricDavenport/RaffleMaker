@@ -17,11 +17,11 @@ class NetworkHelper {
     session = URLSession(configuration: .default)
   }
   
-  /// <#Description#>
+  /// URLSession dataTask to send and receive data
   /// - Parameters:
-  ///   - request: <#request description#>
-  ///   - completion: <#completion description#>
-  /// - Returns: <#description#>
+  ///   - request: URLRequesrt  - the URL fort the API being called
+  ///   - completion: @escaping closure for handling data versus appError
+  /// - Returns: Closure returns Data used with JSONDecoder or AppError 
   func performDataTask(with request: URLRequest,
                        completion: @escaping (Result<Data, AppError>) -> ()) {
     

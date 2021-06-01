@@ -24,6 +24,15 @@ struct Participant: Codable, Identifiable, Equatable {
     case registeredAt = "registered_at"
   }
   
+  init(id: Int, raffleId: Int, firstName: String, lastName: String, email: String, phone: String?, registeredAt: String) {
+    self.id = id
+    self.raffleId = raffleId
+    self.firstName = firstName
+    self.lastName = lastName
+    self.email = email
+    self.phone = phone
+    self.registeredAt = registeredAt
+  }
   
   
 }

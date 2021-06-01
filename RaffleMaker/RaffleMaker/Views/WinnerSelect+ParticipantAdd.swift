@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct WinnerPartiButton: View {
-  @Environment(\.colorScheme) var colorScheme
   
+  @Environment(\.colorScheme) var colorScheme
   @Binding var raffleId: Int
   @Binding var raffleName: String
   @State private var newParIsShowing = false
@@ -19,6 +19,7 @@ struct WinnerPartiButton: View {
   
   var body: some View {
     HStack {
+      // Select Winner button
       Button(action: {
         RaffleAPIClient.selectWinner(secretToken, raffleId) { result in
           switch result {
@@ -34,6 +35,8 @@ struct WinnerPartiButton: View {
           .foregroundColor(colorScheme == .dark ? Color.red : Color.black)
       })
       .buttonStyle(MainButton(color: .red))
+      
+      // New participant button
       Button(action: {
         self.newParIsShowing = true
       }, label: {

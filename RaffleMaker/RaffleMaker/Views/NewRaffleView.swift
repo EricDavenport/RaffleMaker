@@ -9,9 +9,9 @@ import SwiftUI
 
 struct NewRaffleView: View {
   
-  @Binding var isPresenting: Bool
   @State private var raffleName: String = ""
   @State private var secretToken: String = ""
+  @Binding var isPresenting: Bool
   @Binding var needsRefresh: Bool
   @Binding var showAlert: Bool
   @Binding var created: Bool
@@ -24,6 +24,7 @@ struct NewRaffleView: View {
       }
       HStack {
         Spacer()
+        // Create / Save new raffle button
         Button(action: {
           RaffleAPIClient.createRaffle(raffleName, secretToken) { result in
             switch result {

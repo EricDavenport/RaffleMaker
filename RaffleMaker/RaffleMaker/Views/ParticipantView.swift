@@ -18,6 +18,7 @@ struct ParticipantView: View {
       Text("\(participant.email)")
       Text("\(participant.phone ?? "")")
     }
+    .offset(x: -10)
     .frame(width: 400)
   }
 }

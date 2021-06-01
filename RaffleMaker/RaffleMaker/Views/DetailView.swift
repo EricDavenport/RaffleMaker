@@ -9,12 +9,11 @@ import SwiftUI
 
 struct DetailView: View {
   
-  
-  @State var rafID = 46
   var secretToken = ""
+  @ObservedObject var detailViewModel = DetailVM()
+  @State var rafID = 46
   @State var userInput = ""
   @State var participants = [Participant]()
-  @ObservedObject var detailViewModel = DetailVM()
   @State var winnerSelected = false
   @State var needRefresh = false
   
@@ -22,7 +21,7 @@ struct DetailView: View {
     VStack {
       WinnerSelected(winnerId: .constant(detailViewModel.raffle.winnerId ?? -2), winnerSelected: $winnerSelected)
       WinnerPartiButton(raffleId: .constant(detailViewModel.raffle.id), raffleName: .constant(detailViewModel.raffle.name), secretToken: .constant(userInput), winnerSelected: winnerSelected, needsRefresh: $needRefresh)
-        .onAppear(perform: loadRaffle)
+        .onAppear(perform: updateUI)
       Divider()
       TextField("Secret Token", text: $userInput)
         .padding()
@@ -34,23 +33,24 @@ struct DetailView: View {
               ParticipantView(participant: .constant(participant))
             }
           }
-          .onAppear(perform: loadRaffle)
+          .onAppear(perform: updateUI)
           .listStyle(DefaultListStyle())
         }
-        
       }
-      
     }
-    .onAppear(perform: loadRaffle)
+    .onAppear(perform: updateUI)
     .navigationTitle("\(detailViewModel.raffle.name)")
   }
   
-  private func loadRaffle() {
+  /// function called when the UI needs to update. In order to change UI the Observed variable needs to be updated
+  private func updateUI() {
     detailViewModel.loadRaffle(rafID)
     detailViewModel.loadParticipants(rafID)
     print(needRefresh)
   }
   
+  /// Helper function to compare the userInput to the prepopulated secretToken
+  /// - Returns: Boolean if the two values match or not
   private func isSecretCorrect() -> Bool {
     return secretToken == userInput
   }
