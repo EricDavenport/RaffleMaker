@@ -17,7 +17,7 @@ Instructions
 Have Fun!!
 
 TODO List:
-[ ] Alert setup
-[ ] Sort Raffles
-[ ] Guard the ability to add to the participant list without the secret token
-[ ] Animation showing winner action
+- [ ] Alert setup
+- [ ] Sort Raffles
+- [ ] Guard the ability to add to the participant list without the secret token
+- [ ] Animation showing winner action
