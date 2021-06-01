@@ -10,7 +10,7 @@ import SwiftUI
 
 class RaffleListVM: ObservableObject {
   @Published var raffles: [Raffle] = []
-//  @Published var singleRaffle: Raffle
+  //  @Published var singleRaffle: Raffle
   
   func loadRaffles() {
     RaffleAPIClient.loadAllRaffle { result in
@@ -25,15 +25,15 @@ class RaffleListVM: ObservableObject {
     }
   }
   
-//  func loadOne() {
-//    RaffleAPClient.loadSingleRaffle(46) { result in
-//      switch result {
-//      case .failure(let error):
-//        print("error: \(error)")
-//      case .success(let _):
-//        self.singleRaffle = raffle
-//      }
-//    }
-//  }
+  //  func loadOne() {
+  //    RaffleAPClient.loadSingleRaffle(46) { result in
+  //      switch result {
+  //      case .failure(let error):
+  //        print("error: \(error)")
+  //      case .success(let _):
+  //        self.singleRaffle = raffle
+  //      }
+  //    }
+  //  }
   
 }

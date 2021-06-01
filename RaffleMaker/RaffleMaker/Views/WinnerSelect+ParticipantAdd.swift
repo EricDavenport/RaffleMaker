@@ -46,7 +46,6 @@ struct WinnerPartiButton: View {
         NewParticipantView(raffleId: $raffleId, isPresenting: $newParIsShowing, needRefresh: $needsRefresh)
       })
     }
-    
     .padding()
     .frame(height: 70)
   }

@@ -46,10 +46,10 @@ struct NewRaffleView: View {
     }
   }
 }
-  
-  struct NewRaffleView_Previews: PreviewProvider {
-    static var previews: some View {
-      NewRaffleView(isPresenting: .constant(false), needsRefresh: .constant(false), showAlert: .constant(false), created: .constant(false))
-    }
+
+struct NewRaffleView_Previews: PreviewProvider {
+  static var previews: some View {
+    NewRaffleView(isPresenting: .constant(false), needsRefresh: .constant(false), showAlert: .constant(false), created: .constant(false))
   }
+}
 

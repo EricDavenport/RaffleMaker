@@ -24,10 +24,10 @@ class NetworkHelper {
   /// - Returns: <#description#>
   func performDataTask(with request: URLRequest,
                        completion: @escaping (Result<Data, AppError>) -> ()) {
-
+    
     let dataTask = session.dataTask(with: request) { (data, response, error) in
       
-
+      
       if let error = error {
         completion(.failure(.networkClientError(error)))
         return
@@ -43,7 +43,7 @@ class NetworkHelper {
         return
       }
       
-
+      
       switch urlResponse.statusCode {
       case 200...299: break
       default:

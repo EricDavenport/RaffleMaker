@@ -26,7 +26,7 @@ struct RaffleListView: View {
         ForEach(raffleAPI.raffles) { rfl in
           NavigationLink(destination: DetailView(rafID: rfl.id, secretToken: rfl.secretToken ?? "", winnerSelected: (rfl.winnerId != nil) ? true : false)) {
             RaffleView(raffle: rfl)
-
+            
           }
         }
         .onAppear(perform: load)
@@ -37,14 +37,11 @@ struct RaffleListView: View {
       }, label: {
         Text("New Raffle")
       }))
-//      .alert(isPresented: $showingAlert, content: {
-//        Alert(title: Text("\(created ? "Success" : "Failed")"), message: Text("\(created ? "Raffle Created" : "Unable to create raffle please retry")"), dismissButton: .none)
-//
-//      })
       .sheet(isPresented: $newRaffleIsPresenting, content: {
         NewRaffleView(isPresenting: $newRaffleIsPresenting, needsRefresh: $needsRefresh, showAlert: $showingAlert, created: $created)
       })
       .navigationTitle("Ribble Raffle")
+      // TODO: add alert + boolean for showing completion vs failure
     }
     .onAppear(perform: load)
   }

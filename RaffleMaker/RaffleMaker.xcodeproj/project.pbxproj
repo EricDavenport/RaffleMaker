@@ -25,7 +25,6 @@
 		589F31FE26615E0900B75415 /* ParticipantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F31FD26615E0900B75415 /* ParticipantModel.swift */; };
 		589F320026615E1600B75415 /* RaffleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F31FF26615E1600B75415 /* RaffleModel.swift */; };
 		589F3216266197D000B75415 /* RaffleMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F3215266197D000B75415 /* RaffleMakerTests.swift */; };
-		58E9C4902664447C00CE14F0 /* Alert+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E9C48F2664447C00CE14F0 /* Alert+Extension.swift */; };
 		58E9C4932664494C00CE14F0 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E9C4922664494C00CE14F0 /* DetailView.swift */; };
 		58E9C49526644C9100CE14F0 /* NewRaffleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E9C49426644C9100CE14F0 /* NewRaffleView.swift */; };
 /* End PBXBuildFile section */
@@ -63,7 +62,6 @@
 		589F3213266197D000B75415 /* RaffleMakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RaffleMakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		589F3215266197D000B75415 /* RaffleMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaffleMakerTests.swift; sourceTree = "<group>"; };
 		589F3217266197D000B75415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		58E9C48F2664447C00CE14F0 /* Alert+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Extension.swift"; sourceTree = "<group>"; };
 		58E9C4922664494C00CE14F0 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		58E9C49426644C9100CE14F0 /* NewRaffleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRaffleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,7 +166,6 @@
 		58E9C48E2664445600CE14F0 /* HelperFiles */ = {
 			isa = PBXGroup;
 			children = (
-				58E9C48F2664447C00CE14F0 /* Alert+Extension.swift */,
 				583ED874266525ED00998E19 /* CustomButton.swift */,
 			);
 			path = HelperFiles;
@@ -301,7 +298,6 @@
 				581843A02662ADB600D73967 /* RaffleListVM.swift in Sources */,
 				58E9C4932664494C00CE14F0 /* DetailView.swift in Sources */,
 				589F31FE26615E0900B75415 /* ParticipantModel.swift in Sources */,
-				58E9C4902664447C00CE14F0 /* Alert+Extension.swift in Sources */,
 				581843A22662C1B800D73967 /* RaffleView.swift in Sources */,
 				583ED87B266568EA00998E19 /* ParticipantView.swift in Sources */,
 				589F31F726615C1600B75415 /* NetworkHelper.swift in Sources */,

@@ -15,8 +15,6 @@ struct WinnerSelected: View {
     ZStack {
       Image(systemName: winnerSelected ? "star.fill" : "star")
         .resizable()
-//        .rotationEffect(.degrees(winnerSelected ? 360 : -360))
-//        .scaleEffect(winnerSelected ? 1 : 0.15, anchor: .center)
         .foregroundColor(.yellow)
         .frame(width: 100, height: 100)
       

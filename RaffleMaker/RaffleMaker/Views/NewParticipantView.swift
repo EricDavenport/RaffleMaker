@@ -18,7 +18,6 @@ struct NewParticipantView: View {
   @Binding var isPresenting: Bool
   @State private var showAlert = false
   @State private var successAlert = false
-  @ObservedObject var dvm = DetailVM()
   @Binding var needRefresh: Bool
   @State private var failedAlertShow = false
   @State private var appErrorToShow = ""
@@ -76,9 +75,8 @@ struct NewParticipantView: View {
         print("failed to add participant:\(appError)")
       case .success:
         DispatchQueue.main.async {
-        // TODO: Alert showing success
-        self.showAlert = true
-//        dvm.loadParticipants(raffleId)
+          // TODO: Alert showing success
+          self.showAlert = true
         }
         print("successully added participant")
       }

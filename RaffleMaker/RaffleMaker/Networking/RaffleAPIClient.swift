@@ -9,7 +9,7 @@ import Foundation
 
 class RaffleAPIClient: ObservableObject {
   
-//  public var raffle: [Raffle] = []
+  //  public var raffle: [Raffle] = []
   @Published var raffles = [Raffle]()
   
   func filterRaffles(search: String) {
@@ -17,7 +17,7 @@ class RaffleAPIClient: ObservableObject {
   }
   
   func fetchRaffles() {
-//    loadAllRaffles()
+    //    loadAllRaffles()
     let endpointString = "https://raffle-fs-app.herokuapp.com/api/raffles"
     
     // create url from the string(above)
@@ -39,7 +39,7 @@ class RaffleAPIClient: ObservableObject {
           }
           
         } catch {
-//          completion(.failure(.decodingError(error)))
+          //          completion(.failure(.decodingError(error)))
         }
       }
     }
@@ -114,7 +114,7 @@ class RaffleAPIClient: ObservableObject {
   /// - Returns: <#description#>
   static func loadParticipants(_ id: Int, completion: @escaping (Result<[Participant], AppError>) -> ()) {
     let endpointString = "https://raffle-fs-app.herokuapp.com/api/raffles/\(id)/participants"
-  
+    
     guard let url = URL(string: endpointString) else {
       completion(.failure(.badURL(endpointString)))
       return
@@ -168,7 +168,7 @@ class RaffleAPIClient: ObservableObject {
     }
   }
   
-
+  
   
   /// <#Description#>
   /// - Parameters:

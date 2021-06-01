@@ -14,7 +14,7 @@ struct ParticipantView: View {
   var body: some View {
     VStack {
       Text("\(participant.firstName) \(participant.lastName)")
-      .padding(5)
+        .padding(5)
       Text("\(participant.email)")
       Text("\(participant.phone ?? "")")
     }
