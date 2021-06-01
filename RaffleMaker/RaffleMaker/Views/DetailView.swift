@@ -22,6 +22,7 @@ struct DetailView: View {
     VStack {
       WinnerSelected(winnerId: .constant(detailViewModel.raffle.winnerId ?? -2), winnerSelected: $winnerSelected)
       WinnerPartiButton(raffleId: .constant(detailViewModel.raffle.id), raffleName: .constant(detailViewModel.raffle.name), secretToken: .constant(userInput), winnerSelected: winnerSelected, needsRefresh: $needRefresh)
+        .onAppear(perform: loadRaffle)
       Divider()
       TextField("Secret Token", text: $userInput)
         .padding()
@@ -33,10 +34,12 @@ struct DetailView: View {
               ParticipantView(participant: .constant(participant))
             }
           }
-          .listStyle(DefaultListStyle())
           .onAppear(perform: loadRaffle)
+          .listStyle(DefaultListStyle())
         }
+        
       }
+      
     }
     .onAppear(perform: loadRaffle)
     .navigationTitle("\(detailViewModel.raffle.name)")
@@ -45,6 +48,7 @@ struct DetailView: View {
   private func loadRaffle() {
     detailViewModel.loadRaffle(rafID)
     detailViewModel.loadParticipants(rafID)
+    print(needRefresh)
   }
   
   private func isSecretCorrect() -> Bool {

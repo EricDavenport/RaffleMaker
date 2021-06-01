@@ -14,8 +14,9 @@ struct RaffleListView: View {
   @State private var currentID = 0
   @State private var search = ""
   @State private var newRaffleIsPresenting: Bool = false
-  @State private var showingAlert: Bool = false
+  @State var showingAlert: Bool = false
   @State var needsRefresh = false
+  @State var created = false
   
   var body: some View {
     NavigationView {
@@ -36,8 +37,12 @@ struct RaffleListView: View {
       }, label: {
         Text("New Raffle")
       }))
+//      .alert(isPresented: $showingAlert, content: {
+//        Alert(title: Text("\(created ? "Success" : "Failed")"), message: Text("\(created ? "Raffle Created" : "Unable to create raffle please retry")"), dismissButton: .none)
+//
+//      })
       .sheet(isPresented: $newRaffleIsPresenting, content: {
-        NewRaffleView(isPresenting: $newRaffleIsPresenting, needsRefresh: $needsRefresh)
+        NewRaffleView(isPresenting: $newRaffleIsPresenting, needsRefresh: $needsRefresh, showAlert: $showingAlert, created: $created)
       })
       .navigationTitle("Ribble Raffle")
     }
@@ -48,6 +53,7 @@ struct RaffleListView: View {
     if newRaffleIsPresenting == false {
       raffleAPI.fetchRaffles()
     }
+    print("loda0ed")
   }
 }
 

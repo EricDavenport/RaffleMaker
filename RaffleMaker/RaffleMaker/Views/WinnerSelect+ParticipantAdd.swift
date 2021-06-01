@@ -31,12 +31,8 @@ struct WinnerPartiButton: View {
         }
       }, label: {
         Text("Select Winner")
-//          .background(Color.black)
           .foregroundColor(colorScheme == .dark ? Color.red : Color.black)
       })
-//      .background(colorScheme == .dark ? Color.gray : Color.white)
-//      .animation(.default)
-//      .padding(10)
       .buttonStyle(MainButton(color: .red))
       Button(action: {
         self.newParIsShowing = true

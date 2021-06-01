@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct NewParticipantView: View {
+  
+  @Environment(\.presentationMode) var presentationMode
   @State private var firstName = ""
   @State private var lastName = ""
   @State private var email = ""
@@ -18,6 +20,8 @@ struct NewParticipantView: View {
   @State private var successAlert = false
   @ObservedObject var dvm = DetailVM()
   @Binding var needRefresh: Bool
+  @State private var failedAlertShow = false
+  @State private var appErrorToShow = ""
   
   var body: some View {
     VStack {
@@ -34,12 +38,11 @@ struct NewParticipantView: View {
       HStack {
         Button(action: {
           addNewParticipant()
-          isPresenting = showAlert
+          showAlert = true
+          isPresenting.toggle()
+          needRefresh.toggle()
         }, label: {
           Text("Save")
-        })
-        .alert(isPresented: $showAlert, content: {
-          Alert(title: Text("Success"), message: Text("New participant added to raffle."), dismissButton: .default(Text("OK")))
         })
         .buttonStyle(MainButton(color: .green))
         
@@ -54,6 +57,8 @@ struct NewParticipantView: View {
     }
   }
   
+  
+  
   private func addNewParticipant() {
     var optionalNumber: String? {
       if phone == "" {
@@ -66,12 +71,15 @@ struct NewParticipantView: View {
       switch result {
       case .failure(let appError):
         // TODO: present alert of failure
+        
+        failedAlertShow = true
         print("failed to add participant:\(appError)")
       case .success:
+        DispatchQueue.main.async {
         // TODO: Alert showing success
         self.showAlert = true
-        needRefresh = true
-        dvm.loadParticipants(raffleId)
+//        dvm.loadParticipants(raffleId)
+        }
         print("successully added participant")
       }
     }

@@ -19,13 +19,12 @@ struct RaffleView: View {
             .foregroundColor(.green)
         }
         Spacer()
-        Text("Raffle #: \(raffle.id)")
+        Text("Raffle # \(raffle.id)")
           .padding(.trailing)
       }
       Spacer()
         .frame(height: 30)
       Text("\(raffle.name)")
-      Text("\(raffle.createdAt)")
       ZStack {
         Image("trophy2")
           .frame(width: 60, height: 60, alignment: Alignment.center)
@@ -42,8 +41,8 @@ struct RaffleView: View {
         Text("Draw a winner!")
           .foregroundColor(.blue)
       }
-      
     }
+    .frame(height: 175)
   }
 }
 
