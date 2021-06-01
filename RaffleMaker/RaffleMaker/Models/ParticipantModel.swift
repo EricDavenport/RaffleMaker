@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Participant model all values required excluding phone number when adding new particiants to a raffle
 struct Participant: Codable, Identifiable, Equatable {
   var id: Int
   var raffleId: Int

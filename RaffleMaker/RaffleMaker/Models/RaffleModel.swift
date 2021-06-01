@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Raffle model used when Decoding JSON data from URLSession API call
 class Raffle: Codable, Identifiable, Equatable, ObservableObject {
   static func == (lhs: Raffle, rhs: Raffle) -> Bool {
     lhs.id == rhs.id

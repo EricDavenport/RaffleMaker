@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+/// View Model for controlling some functionality on the Detail View
 class DetailVM: ObservableObject {
   @Published var raffle = Raffle(id: 0, name: "", createdAt: "", raffledAt: nil, winnerId: nil)
   @Published var participants = [Participant]()
