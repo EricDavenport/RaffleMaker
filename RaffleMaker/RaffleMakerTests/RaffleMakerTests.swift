@@ -12,7 +12,7 @@ class RaffleMakerTests: XCTestCase {
 
   func testAllLoad() {
     // arrange
-    let expectedFirstRaffle = Raffle(id: 8, name: "My first Raffle", createdAt: "2021-05-28T14:50:27.189Z", raffledAt: nil, winnerId: nil)
+    let expectedFirstRaffle = Raffle(id: 1, name: "Sample Raffle", createdAt: "2021-05-22T23:59:27.260Z", raffledAt: "2021-05-24T05:33:55.304Z", winnerId: 5)
     
     let exp = XCTestExpectation(description: "Fully loaded")
     
@@ -22,7 +22,8 @@ class RaffleMakerTests: XCTestCase {
         case .failure(let error):
           (XCTFail("Failed to load raffle list: \(error)"))
         case .success(let raffles):
-          let actualFirstRaffle = raffles[0]
+          let sortedRaffles = raffles.sorted{ $0.id < $1.id}
+          let actualFirstRaffle = sortedRaffles[0]
           XCTAssertEqual(expectedFirstRaffle, actualFirstRaffle, "They match")
           exp.fulfill()
         }
@@ -49,14 +50,14 @@ class RaffleMakerTests: XCTestCase {
     }
     wait(for: [exp], timeout: 5)
   }
-  MARK: CreateTest
-        test works - commented out to avoid constant creation
+//  MARK: CreateTest
+//        test works - commented out to avoid constant creation
   func testRaffleCreation() {
 
     let exp = XCTestExpectation(description: "raffle successfully posted")
 
     do {
-      RaffleAPClient.createRaffle("Did you figure it out", "L0ok5Lik3Y0uGotIt") { result in
+      RaffleAPIClient.createRaffle("Did you figure it out", "L0ok5Lik3Y0uGotIt") { result in
         switch result {
         case .failure(let appError):
           XCTFail("Failed: \(appError)")
